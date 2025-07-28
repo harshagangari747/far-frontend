@@ -40,7 +40,7 @@ const MyListings = () => {
       setLoading(true);
       const res = await axios.get(`${apiUrl}/listings/owner?emailId=${email}`, {
         headers: {
-          Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
         },
       });
 

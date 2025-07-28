@@ -51,7 +51,7 @@ export const deleteListing = async (listingId, ownerId) => {
     const response = await axios.delete(`${apiUrl}/listings`, {
       params: { listingId, ownerId },
       headers: {
-        Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },
     });
 

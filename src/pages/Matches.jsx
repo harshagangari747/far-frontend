@@ -89,7 +89,7 @@ const Matches = () => {
         `${apiUrl}/interests?choice=match&emailId=${emailId}&listingId=${listingId}`,
         {
           headers: {
-            Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
           },
         }
       );
@@ -116,7 +116,7 @@ const Matches = () => {
     try {
       const response = await axios.get(`${apiUrl}/profile?userId=${tenantId}`, {
         headers: {
-          Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
         },
       });
       return response.data;
