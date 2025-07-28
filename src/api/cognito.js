@@ -8,6 +8,4 @@ const loginUrl = `${COGNITO_DOMAIN}/login?client_id=${CLIENT_ID}&response_type=$
   REDIRECT_URI
 )}`;
 
-console.log("Cognito Login URL:", loginUrl);
-
 export default loginUrl;

@@ -11,38 +11,36 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     const userInfoFromStorage = localStorage.getItem("userInfo");
     const fetchUser = async () => {
-      const email = localStorage.getItem("emailId");
-      const token = setTimeout(localStorage.getItem("access_token"), 500);
-      const localstorageToken = localStorage.getItem("access_token");
-      console.log("toekn", token);
-      console.log("l token", localstorageToken);
-
-      if (!email) {
-        setIsLoadingUser(false);
-        return;
-      } else {
-        if (userInfoFromStorage) {
-          setUserInfo(JSON.parse(userInfoFromStorage));
+      setTimeout(async () => {
+        const email = localStorage.getItem("emailId");
+        const localstorageToken = localStorage.getItem("access_token");
+        if (!email) {
           setIsLoadingUser(false);
           return;
-        }
-        try {
-          const res = await axios.get(`${apiUrl}/profile?emailId=${email}`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          const user = res.data?.data?.[0];
-          if (user) {
-            setUserInfo(user);
-            localStorage.setItem("userInfo", JSON.stringify(user));
+        } else {
+          if (userInfoFromStorage) {
+            setUserInfo(JSON.parse(userInfoFromStorage));
+            setIsLoadingUser(false);
+            return;
           }
-        } catch (err) {
-          console.error("Failed to fetch user info", err);
-        } finally {
-          setIsLoadingUser(false);
+          try {
+            const res = await axios.get(`${apiUrl}/profile?emailId=${email}`, {
+              headers: {
+                Authorization: `Bearer ${localstorageToken}`,
+              },
+            });
+            const user = res.data?.data?.[0];
+            if (user) {
+              setUserInfo(user);
+              localStorage.setItem("userInfo", JSON.stringify(user));
+            }
+          } catch (err) {
+            console.error("Failed to fetch user info", err);
+          } finally {
+            setIsLoadingUser(false);
+          }
         }
-      }
+      }, 700);
     };
 
     fetchUser();
