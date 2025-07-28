@@ -18,17 +18,14 @@ const MyListings = () => {
 
   useEffect(() => {
     setLoading(true);
-    console.log("checking cache");
-    console.log("loading stat", loading);
+
     const myListingIds = JSON.parse(localStorage.getItem("myListings") || "[]");
     const cachedListings = JSON.parse(localStorage.getItem("listings") || "[]");
-    console.log("myListingIds", myListingIds);
+
     // Resolve listings
     const resolved = myListingIds
       .map((id) => cachedListings.find((l) => l.listingId === id))
       .filter(Boolean);
-
-    console.log("resolved listings", resolved);
 
     if (resolved.length === myListingIds.length && resolved.length > 0) {
       setListings(resolved);
@@ -40,7 +37,6 @@ const MyListings = () => {
 
   const fetchListingsFromAPI = async () => {
     try {
-      console.log("hitting api");
       setLoading(true);
       const res = await axios.get(`${apiUrl}/listings/owner?emailId=${email}`, {
         headers: {
@@ -49,7 +45,7 @@ const MyListings = () => {
       });
 
       const fetched = res.data.data;
-      console.log("Fetched listings:", fetched);
+
       if (!fetched || fetched.length === 0) {
         setMessages("No listings found.");
         setError("");
@@ -70,10 +66,8 @@ const MyListings = () => {
     } catch (err) {
       if (err.response && err.response.status === 401) {
         setError("Please Login to view your listings.");
-        console.error("Unauthorized access:", err);
         return;
       }
-      console.error("Error fetching listings:", err);
       setError("Failed to load listings. Please try again.");
     } finally {
       setLoading(false);
@@ -106,7 +100,6 @@ const MyListings = () => {
     if (!confirmDelete) return;
 
     try {
-      console.log("listigId", listingId, "ownerId", ownerId);
       const message = await deleteListing(listingId, ownerId);
 
       alert(
@@ -116,13 +109,10 @@ const MyListings = () => {
       navigate("/owner/listings");
     } catch (error) {
       alert(error.message || "Failed to delete listing.");
-      console.error("Delete error:", error);
     }
   };
-  console.log("loading status", loading);
 
   function handleRefresh() {
-    console.log("Refreshing listings...");
     localStorage.removeItem("myListings");
     localStorage.removeItem("listings");
     window.location.reload();
@@ -195,10 +185,6 @@ const MyListings = () => {
                       <li className="px-3 py-1 hover:bg-orange-100 cursor-pointer">
                         <button
                           onClick={() => {
-                            console.log(
-                              "Clicked listingId:",
-                              listing.listingId
-                            );
                             handleView(listing.listingId);
                             setActiveDropdown(null); // hide after click
                           }}
