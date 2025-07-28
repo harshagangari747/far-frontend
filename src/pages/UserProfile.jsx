@@ -75,7 +75,7 @@ const UserProfile = () => {
           address: formData.address,
         },
       };
-      const response = await axios.patch(`${apiUrl}/profile`, payload, {
+      await axios.patch(`${apiUrl}/profile`, payload, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,

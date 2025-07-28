@@ -12,10 +12,10 @@ export const UserProvider = ({ children }) => {
     const userInfoFromStorage = localStorage.getItem("userInfo");
     const fetchUser = async () => {
       const email = localStorage.getItem("emailId");
+      const token = sessionStorage.getItem("access_token");
 
-      if (!email) {
+      if (!email || !token) {
         setIsLoadingUser(false);
-
         return;
       } else {
         if (userInfoFromStorage) {
@@ -26,7 +26,7 @@ export const UserProvider = ({ children }) => {
         try {
           const res = await axios.get(`${apiUrl}/profile?emailId=${email}`, {
             headers: {
-              Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
+              Authorization: `Bearer ${token}`,
             },
           });
           const user = res.data?.data?.[0];
@@ -42,7 +42,16 @@ export const UserProvider = ({ children }) => {
       }
     };
 
-    fetchUser();
+    const waitForTokenFetch = () => {
+      const token = sessionStorage.getItem("access_token");
+      if (token) {
+        fetchUser();
+      } else {
+        setTimeout(waitForTokenFetch, 100);
+      }
+    };
+
+    waitForTokenFetch();
   }, []);
 
   return (

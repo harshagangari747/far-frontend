@@ -12,7 +12,6 @@ import MyInterests from "./pages/MyInterests";
 import Matches from "./pages/Matches";
 import { useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
-
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 
 function App() {
