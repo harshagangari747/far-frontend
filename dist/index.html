@@ -5,10 +5,72 @@
     <link rel="icon" type="image/svg+xml" href="/farlogo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Find A Roof</title>
-    <script type="module" crossorigin src="/assets/index-2t2YxP2k.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-VRIPY4Me.css">
+    <style>
+      /* Layout */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        font-family: system-ui, sans-serif;
+      }
+
+      #root {
+        flex: 1 0 auto; /* Allow it to grow and push footer down */
+      }
+
+      footer {
+        flex-shrink: 0;
+        text-align: center;
+        font-size: 0.8em;
+        color: grey;
+        padding: 10px 0;
+        background-color: #f9f9f9;
+        border-top: 1px solid #ddd;
+        width: 100%;
+      }
+
+      @media (max-width: 600px) {
+        footer {
+          font-size: 0.75em;
+          padding: 10px 0;
+          margin-top: 40%;
+          background-color: none;
+        }
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-CWesGWPT.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-8OOEKx-c.css">
   </head>
   <body>
     <div id="root"></div>
+    <footer>
+      <p>
+        Find A Roof (FAR) is a project developed to let users find and post
+        rental listings. The current scope is set to southern states for a test
+        run. Other states and places might be considered in future.
+      </p>
+      <p>
+        <ul>
+          <li><b><i>Developer: Sai Harsha Gangari</i></b></li>
+          <li>
+            <b>
+              <span>
+                <a href="https://www.linkedin.com/in/sai-harsha-gangari" target="_blank">Linked In</a>
+              </span> 
+              <span>  | </span>
+              <span>
+                <a href="https://www.github.com/harshagangari747" target="_blank">Github</a>
+              </span>
+            </li>
+        </ul>
+
+      </p>
+    </footer>
   </body>
 </html>
