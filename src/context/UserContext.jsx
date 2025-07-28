@@ -13,6 +13,9 @@ export const UserProvider = ({ children }) => {
     const fetchUser = async () => {
       const email = localStorage.getItem("emailId");
       const token = setTimeout(localStorage.getItem("access_token"), 500);
+      const localstorageToken = localStorage.getItem("access_token");
+      console.log("toekn", token);
+      console.log("l token", localstorageToken);
 
       if (!email) {
         setIsLoadingUser(false);
