@@ -43,7 +43,7 @@ const Matches = () => {
           );
 
           const listings = response.data.data || [];
-          console.log("Fetched listings for Matches:", listings);
+
           if (!listings || listings.length === 0) {
             setError("No listings found.");
             return;
@@ -96,7 +96,7 @@ const Matches = () => {
         }
       );
       var matches = response.data.data || [];
-      console.log("Matches fetched successfully", matches);
+
       if (!matches || matches.length === 0) {
         matches = ["No matches found"];
         setExpanded(listingId);
@@ -121,8 +121,6 @@ const Matches = () => {
           Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
         },
       });
-      console.log("User details fetched successfully", response.data.data);
-      console.log("match response", response);
       return response.data;
     } catch (err) {
       console.error("Failed to fetch user details", err);

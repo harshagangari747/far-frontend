@@ -44,16 +44,14 @@ const AddListing = () => {
           Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
         },
       });
-      console.log("Listing added successfully:", response);
+
       if (response.status === 201) {
         setShowModal(true);
         setModalMessage("Listing added successfully!");
 
         const newListing = response.data;
-        console.log("updated response", response);
-        console.log("New listing data:", newListing);
+
         const newListingId = newListing.listingId;
-        console.log("New listing ID:", newListingId);
 
         // Step 1: Update the global 'listings' cache (full objects)
         const existingGlobalListings =
@@ -78,10 +76,10 @@ const AddListing = () => {
         setShowModal(true);
         setModalMessage("Unauthorized access. Please log in again.");
         // alert("Unauthorized access. Please log in again.");
-        console.error("Unauthorized access:", err);
+
         return;
       }
-      console.error("Error adding listing:", err);
+
       // alert("Failed to add listing. Please try again.");
       setError(true);
       setShowModal(true);

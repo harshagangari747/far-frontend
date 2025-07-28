@@ -81,7 +81,7 @@ const UserProfile = () => {
           Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
         },
       });
-      console.log("response", response);
+
       setModalMessage("Profile updated successfully!");
       setModalSuccess(true);
       setShowModal(true);
@@ -99,8 +99,6 @@ const UserProfile = () => {
     sessionStorage.clear();
     window.location.href = "/";
   };
-
-  console.log("user info", userInfo);
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">

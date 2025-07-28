@@ -25,7 +25,6 @@ function App() {
 
       if (accessToken && idToken) {
         sessionStorage.setItem("access_token", accessToken);
-        // localStorage.setItem("access_token", accessToken);
       }
       decodeJwt(idToken);
 

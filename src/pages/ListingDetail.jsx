@@ -7,7 +7,6 @@ import ImageCarousel from "../components/ImageCarousel";
 import { apiUrl } from "../api/apiurl";
 
 const ListingDetail = () => {
-  console.log("listing details page");
   const { listingId } = useParams();
   const navigate = useNavigate();
   const { cachedResults } = useContext(ListingsContext);
@@ -62,7 +61,6 @@ const ListingDetail = () => {
 
   const handleShowInterest = async () => {
     try {
-      console.log("hitting interst api");
       const response = await axios.post(
         `${apiUrl}/interests`,
         {
@@ -78,15 +76,12 @@ const ListingDetail = () => {
         }
       );
 
-      console.log("response", response);
-
       if (response.status !== 200) {
         throw new Error("Failed to post interest");
       }
 
       const data = response.data;
-      console.log("data", data);
-      console.log("Interest posted successfully", data.message);
+
       setResponseStatus(200);
 
       setInterestMessage(

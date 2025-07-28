@@ -19,7 +19,7 @@ const MyInterests = () => {
         const cachedListings = JSON.parse(
           localStorage.getItem("listings") || "[]"
         );
-        console.log("cachedIds", cachedIds);
+
         // Try to resolve listings from global cache
         const resolvedListings = cachedIds
           .map((id) => cachedListings.find((l) => l.listingId === id))
@@ -29,13 +29,12 @@ const MyInterests = () => {
           resolvedListings.length === cachedIds.length &&
           resolvedListings.length > 0
         ) {
-          console.log(" Using listings from cache.");
           setInterests(resolvedListings);
           return;
         }
 
         // If cache incomplete, fetch from API
-        console.log("Fetching from API...");
+
         if (emailId) {
           setLoading(true);
           const res = await axios.get(
@@ -51,7 +50,7 @@ const MyInterests = () => {
 
           if (res.status == 401) {
             setLoading(false);
-            console.log("user unauthorized to perform the action");
+
             setErrorMsg("Please Login to view your interests.");
           }
           const listings = res.data?.data?.listings || [];
@@ -81,7 +80,6 @@ const MyInterests = () => {
     };
 
     if (emailId) {
-      console.log("Fetching interests for email:", emailId);
       fetchInterests();
     } else {
       setErrorMsg("Please Login to view your interests.");

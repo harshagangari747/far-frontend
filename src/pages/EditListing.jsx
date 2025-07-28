@@ -22,8 +22,6 @@ const EditListing = () => {
         );
         if (cachedListing?.listingId === listingId) {
           setListingData(cachedListing);
-        } else {
-          console.warn("Selected listing not found in cache.");
         }
       } catch (error) {
         console.error("Error fetching cached listing:", error);
@@ -70,17 +68,17 @@ const EditListing = () => {
       });
 
       if (response.status === 200) {
-        console.log("setting response to 200 and setting modal to true");
+        ("setting response to 200 and setting modal to true");
         setShowModal(true);
         setModalMessage("Listing updated successfully!");
 
-        console.log("Response data:", response.data);
-        console.log("form", typeof form, form);
+        "Response data:", response.data;
+        "form", typeof form, form;
 
         const updatedListing = response.data.listing;
-        console.log("Updated listing:", response);
+        "Updated listing:", response;
         const updatedId = listingId;
-        console.log("Updated listing ID:", updatedId);
+        "Updated listing ID:", updatedId;
 
         // Update global 'listings' cache
         const globalListings =
@@ -90,7 +88,7 @@ const EditListing = () => {
         );
 
         localStorage.setItem("listings", JSON.stringify(updatedGlobalListings));
-        console.log("modal status", showModal);
+        "modal status", showModal;
       }
     } catch (err) {
       if (err.response && err.response.status === 401) {

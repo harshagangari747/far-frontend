@@ -11,20 +11,16 @@ export const fetchListings = async (filters) => {
   if (occupantType?.length === 1)
     queryParams.append("occupantType", occupantType[0]);
 
-  console.log("hitting api");
   const url = `${apiUrl}/search?${queryParams.toString()}`;
 
   try {
     const response = await fetch(url);
-
-    console.log("Response status:", response);
     const statusCode = response.status;
     const text = await response.text();
     let parsed;
 
     try {
       parsed = JSON.parse(text);
-      console.log("parsed", parsed);
     } catch {
       return { data: [], error: "Invalid response from server." };
     }

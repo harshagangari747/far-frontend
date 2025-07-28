@@ -183,8 +183,6 @@ const ListingForm = ({
       listingId: mode === "edit" ? initialData.listingId : undefined,
     };
 
-    console.log("Submitting payload:", payload);
-    console.log("Submitting imageFile:", imageFile);
     onSubmit(payload, imageFile);
   };
 

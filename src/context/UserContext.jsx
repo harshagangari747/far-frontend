@@ -9,19 +9,16 @@ export const UserProvider = ({ children }) => {
   const [isLoadingUser, setIsLoadingUser] = useState(true);
 
   useEffect(() => {
-    console.log("Triggering api for user info...");
     const userInfoFromStorage = localStorage.getItem("userInfo");
     const fetchUser = async () => {
-      console.log("api triggered");
       const email = localStorage.getItem("emailId");
-      console.log("emailid", email);
+
       if (!email) {
         setIsLoadingUser(false);
-        console.warn("No emailId found in localStorage");
+
         return;
       } else {
         if (userInfoFromStorage) {
-          console.log("Using cached user info");
           setUserInfo(JSON.parse(userInfoFromStorage));
           setIsLoadingUser(false);
           return;
@@ -34,7 +31,6 @@ export const UserProvider = ({ children }) => {
           });
           const user = res.data?.data?.[0];
           if (user) {
-            console.log("setting user");
             setUserInfo(user);
             localStorage.setItem("userInfo", JSON.stringify(user));
           }
