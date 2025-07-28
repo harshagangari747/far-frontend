@@ -13,6 +13,7 @@ export const UserProvider = ({ children }) => {
     const fetchUser = async () => {
       const email = localStorage.getItem("emailId");
       const token = sessionStorage.getItem("access_token");
+      console.log("token", token);
 
       if (!email || !token) {
         setIsLoadingUser(false);
