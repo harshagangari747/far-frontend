@@ -43,11 +43,12 @@ export const UserProvider = ({ children }) => {
     };
 
     const waitForTokenFetch = () => {
+      console.log("Waiting for token...", token);
       const token = sessionStorage.getItem("access_token");
       if (token) {
         fetchUser();
       } else {
-        setTimeout(waitForTokenFetch, 100);
+        setTimeout(waitForTokenFetch, 200);
       }
     };
 
