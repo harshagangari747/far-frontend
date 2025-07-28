@@ -71,7 +71,7 @@ const ListingDetail = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
           },
         }
       );

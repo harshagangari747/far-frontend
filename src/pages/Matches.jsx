@@ -35,9 +35,7 @@ const Matches = () => {
             `${apiUrl}/listings/owner?emailId=${emailId}`,
             {
               headers: {
-                Authorization: `Bearer ${sessionStorage.getItem(
-                  "access_token"
-                )}`,
+                Authorization: `Bearer ${localStorage.getItem("access_token")}`,
               },
             }
           );

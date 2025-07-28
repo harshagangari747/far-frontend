@@ -78,7 +78,7 @@ const UserProfile = () => {
       await axios.patch(`${apiUrl}/profile`, payload, {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
         },
       });
 
@@ -96,7 +96,6 @@ const UserProfile = () => {
 
   const handleLogout = () => {
     localStorage.clear();
-    sessionStorage.clear();
     window.location.href = "/";
   };
 

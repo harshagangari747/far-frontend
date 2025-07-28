@@ -41,9 +41,7 @@ const MyInterests = () => {
             `${apiUrl}/interests?emailId=${emailId}&choice=interest`,
             {
               headers: {
-                Authorization: `Bearer ${sessionStorage.getItem(
-                  "access_token"
-                )}`,
+                Authorization: `Bearer ${localStorage.getItem("access_token")}`,
               },
             }
           );

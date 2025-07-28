@@ -12,10 +12,9 @@ export const UserProvider = ({ children }) => {
     const userInfoFromStorage = localStorage.getItem("userInfo");
     const fetchUser = async () => {
       const email = localStorage.getItem("emailId");
-      const token = sessionStorage.getItem("access_token");
-      console.log("token", token);
+      const token = setTimeout(localStorage.getItem("access_token"), 500);
 
-      if (!email || !token) {
+      if (!email) {
         setIsLoadingUser(false);
         return;
       } else {
@@ -43,17 +42,7 @@ export const UserProvider = ({ children }) => {
       }
     };
 
-    const waitForTokenFetch = () => {
-      console.log("Waiting for token...");
-      const token = sessionStorage.getItem("access_token");
-      if (token) {
-        fetchUser();
-      } else {
-        setTimeout(waitForTokenFetch, 200);
-      }
-    };
-
-    waitForTokenFetch();
+    fetchUser();
   }, []);
 
   return (

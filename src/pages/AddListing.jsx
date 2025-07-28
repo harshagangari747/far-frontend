@@ -41,7 +41,7 @@ const AddListing = () => {
       const response = await axios.post(`${apiUrl}/listings`, form, {
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
         },
       });
 

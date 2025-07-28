@@ -23,7 +23,7 @@ function App() {
       const idToken = params.get("id_token");
 
       if (accessToken && idToken) {
-        sessionStorage.setItem("access_token", accessToken);
+        localStorage.setItem("access_token", accessToken);
       }
       decodeJwt(idToken);
 

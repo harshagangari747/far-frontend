@@ -62,7 +62,7 @@ const EditListing = () => {
       const response = await axios.put(`${apiUrl}/listings`, form, {
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${sessionStorage.getItem("access_token")}`,
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
         },
         timeout: 40000,
       });
