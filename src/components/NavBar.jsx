@@ -87,6 +87,17 @@ const NavBar = () => {
           >
             MATCHES
           </NavLink>
+          <NavLink
+            to="/far-project"
+            end
+            className={({ isActive }) =>
+              `hover:underline ${
+                isActive ? "text-orange-500 font-bold" : "text-blue-900"
+              }`
+            }
+          >
+            FAR PROJECT
+          </NavLink>
         </nav>
 
         {/* Profile */}
@@ -115,6 +126,9 @@ const NavBar = () => {
           </NavLink>
           <NavLink to="/listings/matches" end className="block">
             MATCHES
+          </NavLink>
+          <NavLink to="/far-project" end className="block">
+            FAR PROJECT
           </NavLink>
 
           <button

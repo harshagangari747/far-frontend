@@ -13,6 +13,7 @@ import Matches from "./pages/Matches";
 import { useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
+import FarProject from "./pages/FarProject";
 
 function App() {
   useEffect(() => {
@@ -50,6 +51,7 @@ function App() {
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/interests" element={<MyInterests />} />
             <Route path="/listings/matches" element={<Matches />} />
+            <Route path="/far-project" element={<FarProject />} />
           </Routes>
         </Router>
       </ListingsProvider>
