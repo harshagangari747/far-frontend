@@ -50,18 +50,18 @@ const AddListing = () => {
         setModalMessage("Listing added successfully!");
 
         const newListing = response.data;
-
+        console.log("New listing added:", newListing);
         const newListingId = newListing.listingId;
 
         // Step 1: Update the global 'listings' cache (full objects)
-        const existingGlobalListings =
-          JSON.parse(localStorage.getItem("listings")) || [];
+        // const existingGlobalListings =
+        //   JSON.parse(localStorage.getItem("listings")) || [];
 
-        const updatedGlobalListings = [
-          newListing,
-          ...existingGlobalListings.filter((l) => l.listingId !== newListingId),
-        ];
-        localStorage.setItem("listings", JSON.stringify(updatedGlobalListings));
+        // const updatedGlobalListings = [
+        //   newListing,
+        //   ...existingGlobalListings.filter((l) => l.listingId !== newListingId),
+        // ];
+        // localStorage.setItem("listings", JSON.stringify(updatedGlobalListings));
 
         // Step 2: Update 'myListings' cache (IDs only)
         const myListings = JSON.parse(localStorage.getItem("myListings")) || [];
